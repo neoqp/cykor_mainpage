@@ -1,5 +1,4 @@
 import os,json,datetime,xlsxwriter,feedparser
-from cart.cart import Cart
 from phantomapp import forms
 from phantomapp.models import *
 from django.contrib import messages
@@ -16,34 +15,39 @@ def error404(request,exception):
 def error500(request,*args):
 	return render(request,"505.html")
 
-def index(request):
+def index(request): #use
 	return render(request,"index.html")
 
-def about(request):
+def about(request): #use
 	return render(request,"about.html")
 
-def portfolio(request):
+def portfolio(request): #use
 	return render(request,"portfolio.html")
 
+'''
 def rss(request):
 	feeds = feedparser.parse('https://feeds.feedburner.com/TheHackersNews')
 	return render(request,"rss.html",{'feeds':feeds})
+'''
 
-def blog(request):
+def blog(request): #use
 	posts = BlogContent.objects.all()
 	return render(request,"blog.html",{"posts" : posts})
 
-def blog_post(request,id = None):
+def blog_post(request,id = None): #use
 	post = BlogContent.objects.get(pk=id)
 	return render(request,"blog_post.html",{"post" : post})
 
+'''
 def product_detail(request,id=None):
 	product = ShopProduct.objects.get(pk=id)
 	return render(request,"product_detail.html",{
 			"product" : product,
 			}
 		)
+'''
 
+'''
 def contact(request):
 	if request.method == "POST":
 		form_contact = forms.ContactForm(data=request.POST)
@@ -56,7 +60,7 @@ def contact(request):
 	else:
 		form_contact = forms.ContactForm()
 	return render(request,"contact.html",{'form_contact':form_contact})
-
+'''
 
 def login(request):
 	if request.method == "POST":
@@ -76,7 +80,7 @@ def login(request):
 	return render(request,"login.html",{'form_login':form_login})
 
 
-def register(request):
+def register(request): #use
 	if request.method == "POST":
 		register_form = forms.RegisterForm(data=request.POST)
 		if register_form.is_valid():
@@ -94,7 +98,7 @@ def register(request):
 
 	return render(request,"register.html",{'register_form':register_form})
 
-def user_profile(request,username=None):
+def user_profile(request,username=None): #use
 	user = User.objects.get(username=username)
 	user_profile = UserProfile.objects.get(username=username)
 	if request.method == "POST":
@@ -117,6 +121,7 @@ def user_profile(request,username=None):
 
 	return render(request,"user_profile.html",{"user_form":user_form,"user_profile" : user_profile})
 
+'''
 def shop(request,category=None):
 	id = 0
 	if category == "Books":
@@ -138,6 +143,9 @@ def shop(request,category=None):
 		}
 	)
 
+'''
+
+'''
 @require_POST
 def cart_add(request, item_id = None):
 	cart = Cart(request)
@@ -152,7 +160,9 @@ def cart_remove(request, item_id = None):
 	cart = Cart(request)
 	cart.remove(product)
 	return redirect('cart_detail')
+'''
 
+'''
 @require_POST
 def cart_update(request,item_id = None):
 	cart = Cart(request)
@@ -163,6 +173,9 @@ def cart_update(request,item_id = None):
 		cart.update(product,data['quantity'],data['unit_price'])
 	return redirect('cart_detail')
 
+'''
+
+'''
 def cart_detail(request):
 	return render(request,"cart_detail.html",{'cart' : Cart(request)})
 
@@ -253,3 +266,4 @@ def write_excel(path,write_list):
 		row += 1
 	workbook.close()
 	return
+'''

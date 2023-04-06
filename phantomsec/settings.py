@@ -41,7 +41,6 @@ EMAIL_USE_TLS = True
 # Application definition
 
 INSTALLED_APPS = [
-    'cart',
     'phantomapp',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -78,7 +77,6 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'cart.context_processors.cart',
                 'phantomapp.context_processors.UserInfo',
                 'phantomapp.context_processors.RandomBlog',
                 'phantomapp.context_processors.RandomProduct',
