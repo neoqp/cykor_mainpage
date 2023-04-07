@@ -111,7 +111,6 @@
               <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item"><a href="{% url 'index' %}">Home<b class="caret"></b></a></li>
                 <li class="nav-item"><a href="{% url 'blog' %}">Blog<b class="caret"></b></a></li>
-                <li class="nav-item"><a href="{% url 'contact' %}">Contact<b class="caret"></b></a></li>
                 <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Portfolio <b class="caret"></b></a>
                   <ul class="dropdown-menu megamenu">
                     <li>
@@ -158,9 +157,6 @@
                             <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link">Blog</a></li></li>
                           </ul>
                           <ul class="list-unstyled mb-3">
-                            <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
-                          </ul>
-                          <ul class="list-unstyled mb-3">
                             <li class="nav-item"><a href="{% url 'portfolio' %}" class="nav-link">Portfolio</a></li>
                           </ul>
                         </div>
@@ -172,24 +168,11 @@
                               <li class="nav-item"><a href="{% url 'user_profile' user.username %}" class="nav-link">Customer account / change password</a></li>
                             {% endif %}
                           </ul>
-                          <h5>Shop</h5>
-                          <ul class="list-unstyled mb-3">
-                            <li class="nav-item"><a href="{% url 'shop' 'all' %}" class="nav-link">Shop</a></li>
-                            <li class="nav-item"><a href="{% url 'cart_detail' %}" class="nav-link">Shopping cart</a></li>
-                            <li class="nav-item"><a href="{% url 'checkout' %}" class="nav-link">Checkout</a></li>
-                          </ul>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                          <ul class="list-unstyled mb-3">
-                            <li class="nav-item"><a href="{% url 'chart' %}" class="nav-link">View Chart</a></li>
-                            <li class="nav-item"><a href="{% url 'rss' %}" class="nav-link">Feed RSS</a></li>
-                          </ul>
                         </div>
                       </div>
                     </li>
                   </ul>
                 </li>
-                <li class="list-inline-item"><a href="{% url 'cart_detail' %}"><i class="fa fa-shopping-cart"></i><span> {{ cart.count }} items</span><b class="caret"></b></a>
                 <li class="list-inline-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-user"></i><b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     {% if user.is_authenticated %}
